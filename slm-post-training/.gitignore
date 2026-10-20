@@ -1,0 +1,33 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# Model weights and checkpoints (these live on the Hugging Face Hub, not in git)
+checkpoints/
+outputs/
+*.safetensors
+*.bin
+*.pt
+*.gguf
+
+# Data: raw and processed datasets are rebuilt by data/scripts/
+data/raw/
+data/processed/
+
+# Experiment tracking
+wandb/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+.ipynb_checkpoints/
