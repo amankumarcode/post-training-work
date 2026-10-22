@@ -1,0 +1,24 @@
+# 00-baseline: evaluate the untouched base model.
+# Every later experiment is compared against these numbers.
+
+seed: 42
+
+model:
+  name_or_path: Qwen/Qwen3-0.6B-Base
+  dtype: auto            # bfloat16 on GPU/MPS, float32 on CPU
+
+eval:
+  # Base models are not trained on a chat format, so they are evaluated with
+  # plain few-shot prompts. Post-trained checkpoints will set this to true.
+  apply_chat_template: false
+  batch_size: 8
+  limit: null            # examples per task; null = full benchmark
+  tasks:
+    - name: gsm8k          # main metric: grade-school math
+      num_fewshot: 5
+    - name: ifeval         # guardrail: instruction following
+      num_fewshot: 0
+    - name: arc_challenge  # guardrail: science reasoning
+      num_fewshot: 0
+    - name: mmlu           # guardrail: broad knowledge (forgetting check)
+      num_fewshot: 5

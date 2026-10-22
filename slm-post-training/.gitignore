@@ -31,3 +31,6 @@ wandb/
 .idea/
 .DS_Store
 .ipynb_checkpoints/
+
+# Smoke-test eval outputs (quick --limit runs)
+experiments/*/results/smoke/
